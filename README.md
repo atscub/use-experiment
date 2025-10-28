@@ -25,14 +25,25 @@ If you already inject experiments from a tag manager or SDK, just make sure it w
 ```tsx
 import { useExperiment } from 'use-experiment';
 
-function SeatUpsell() {
-  const isEnabled = useExperiment('showSeatUpsell');
+function NewExperimentalComponent() {
+  const isEnabled = useExperiment('showNewExperimentalComponent');
 
   if (!isEnabled) {
     return null;
   }
 
-  return <UpsellContent />;
+  return <NewExperimentalContent />;
+}
+```
+or decide two different treatments:
+
+```tsx
+import { useExperiment } from 'use-experiment';
+
+function NewExperimentalComponent() {
+  const isEnabled = useExperiment('showNewExperimentalComponent');
+
+  return isEnabled ? <NewExperimentalContent /> : <OldExperimentalContent />;
 }
 ```
 
